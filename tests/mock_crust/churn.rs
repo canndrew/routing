@@ -298,7 +298,7 @@ impl ExpectedPuts {
                 .collect();
             let _ = self.sections.insert(dst, section);
         }
-        self.messages.insert(key);
+        let _ = self.messages.insert(key);
     }
 
     /// Verifies that all sent messages have been received by the appropriate nodes.
@@ -482,7 +482,7 @@ fn client_puts(network: &mut Network<PublicInfo>, nodes: &mut [TestNode], group_
 fn count_sections(nodes: &[TestNode]) -> usize {
     let mut prefixes = HashSet::new();
     for node in nodes {
-        prefixes.insert(*node.routing_table().our_prefix());
+        let _ = prefixes.insert(*node.routing_table().our_prefix());
     }
     prefixes.len()
 }

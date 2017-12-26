@@ -565,7 +565,7 @@ impl MutableData {
             return Err(ClientError::InvalidSuccessor(self.version));
         }
         self.owners.clear();
-        let _dontcare = self.owners.insert(new_owner);
+        let _ = self.owners.insert(new_owner);
         self.version = version;
         Ok(())
     }

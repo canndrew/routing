@@ -23,7 +23,9 @@
 #![warn(trivial_casts, trivial_numeric_casts, unused_extern_crates, unused_import_braces,
         unused_qualifications, unused_results)]
 #![allow(box_pointers, missing_copy_implementations,
-         missing_debug_implementations, variant_size_differences, non_camel_case_types)]
+         missing_debug_implementations, variant_size_differences,
+         non_camel_case_types)]
+
 #![cfg_attr(feature = "use-mock-crust", allow(unused_extern_crates, unused_imports))]
 
 extern crate docopt;
@@ -201,11 +203,11 @@ Options:
         }
 
         /// Put data onto the network.
-        pub fn put(&mut self, put_where: &str, put_what: &str) {
-            let name = Self::calculate_key_name(put_where);
+        pub fn put<S: AsRef<str>>(&mut self, put_where: S, put_what: S) {
+            let name = Self::calculate_key_name(put_where.as_ref());
 
             let value = Value {
-                content: unwrap!(serialise(&put_what)),
+                content: unwrap!(serialise(&put_what.as_ref())),
                 entry_version: 0,
             };
             let entries = iter::once((KEY.to_vec(), value)).collect();

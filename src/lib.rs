@@ -104,10 +104,13 @@
         unused_attributes, unused_comparisons, unused_features, unused_parens, while_true, unused)]
 #![warn(trivial_casts, trivial_numeric_casts, unused_extern_crates, unused_import_braces,
         unused_qualifications, unused_results)]
-#![allow(box_pointers, missing_copy_implementations, missing_debug_implementations,
-         variant_size_differences, non_camel_case_types)]
-#![cfg_attr(feature = "cargo-clippy",
-            deny(unicode_not_nfc, wrong_pub_self_convention, option_unwrap_used))]
+#![allow(box_pointers, missing_copy_implementations,
+         missing_debug_implementations, variant_size_differences, non_camel_case_types)]
+
+#![cfg_attr(feature="cargo-clippy", deny(unicode_not_nfc, wrong_pub_self_convention,
+                                    option_unwrap_used))]
+// FIXME: allow `needless_pass_by_value` until it's OK to change the public API
+#![cfg_attr(feature="cargo-clippy", allow(needless_pass_by_value))]
 
 extern crate config_file_handler;
 #[cfg(not(feature = "use-mock-crust"))]
