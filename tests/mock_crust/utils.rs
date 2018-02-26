@@ -6,6 +6,9 @@
 // KIND, either express or implied. Please review the Licences for the specific language governing
 // permissions and limitations relating to use of the SAFE Network Software.
 
+// Various utilities. Since this is all internal stuff we're a bit lax about the doc.
+#![allow(missing_docs)]
+
 use fake_clock::FakeClock;
 use itertools::Itertools;
 use rand::Rng;
