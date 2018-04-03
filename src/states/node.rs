@@ -149,7 +149,7 @@ impl Node {
     ) -> Option<Self> {
         // old_info is useless for first node
         let old_info = FullInfo::node_new(1u8);
-        let mut node = Self::new(
+        let node = Self::new(
             action_sender,
             cache,
             crust_service,

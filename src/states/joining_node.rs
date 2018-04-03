@@ -180,7 +180,7 @@ impl JoiningNode {
         drop(old_crust_service);
         while let Ok(_crust_event) = crust_rx.try_recv() {}
 
-        let mut crust_service = match Service::new(crust_sender, pub_info) {
+        let crust_service = match Service::new(crust_sender, pub_info) {
             Ok(service) => service,
             Err(error) => panic!("Unable to start crust::Service {:?}", error),
         };
