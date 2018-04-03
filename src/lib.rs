@@ -244,9 +244,9 @@ pub use routing_table::verify_network_invariant;
 pub use types::MessageId;
 pub use xor_name::{XOR_NAME_BITS, XOR_NAME_LEN, XorName, XorNameFromHexError};
 
-type Service = crust::Service<PublicInfo>;
-use crust::Event as CrustEvent;
-type CrustEventSender = crust::CrustEventSender<PublicInfo>;
+type Service = crust::compat::Service<PublicInfo>;
+use crust::compat::Event as CrustEvent;
+type CrustEventSender = crust::compat::CrustEventSender<PublicInfo>;
 type PrivConnectionInfo = crust::PrivConnectionInfo<PublicInfo>;
 type PubConnectionInfo = crust::PubConnectionInfo<PublicInfo>;
 

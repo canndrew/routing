@@ -10,8 +10,8 @@
 // so we turn it off for mock crust specifically.
 #![cfg_attr(feature = "cargo-clippy", allow(needless_pass_by_value))]
 
-use super::crust::{ConnectionInfoResult, CrustEventSender, CrustUser, Event, PrivConnectionInfo,
-                   PubConnectionInfo, Uid};
+use super::crust::{CrustUser, PrivConnectionInfo, PubConnectionInfo, Uid};
+use super::crust::compat::{ConnectionInfoResult, CrustEventSender, Event};
 use CrustEvent;
 use maidsafe_utilities::SeededRng;
 use public_info::PublicInfo;
