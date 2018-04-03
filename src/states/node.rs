@@ -161,7 +161,7 @@ impl Node {
             timer,
             0,
         );
-        if let Err(error) = node.crust_service.start_listening_tcp() {
+        if let Err(error) = node.crust_service.start_listening() {
             error!("{:?} Failed to start listening: {:?}", node, error);
             None
         } else {
