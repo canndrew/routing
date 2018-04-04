@@ -10,7 +10,7 @@ use {CrustEvent, CrustEventSender, GROUP_SIZE, Service};
 use BootstrapConfig;
 use action::Action;
 use full_info::FullInfo;
-use log::LogLevel;
+use log::Level;
 use maidsafe_utilities::event_sender::MaidSafeEventCategory;
 #[cfg(feature = "use-mock-crust")]
 use mock_crust;
@@ -123,7 +123,7 @@ impl State {
     fn group_size(&self) -> usize {
         self.base_state().map_or_else(
             || {
-                log_or_panic!(LogLevel::Error, "Can't get group_size when Terminated.");
+                log_or_panic!(Level::Error, "Can't get group_size when Terminated.");
                 GROUP_SIZE
             },
             Base::group_size,

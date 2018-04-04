@@ -6,7 +6,7 @@
 // KIND, either express or implied. Please review the Licences for the specific language governing
 // permissions and limitations relating to use of the SAFE Network Software.
 
-use hex::ToHex;
+use hex::{self, ToHex};
 use num_bigint::BigUint;
 use rand;
 use std::{fmt, ops};
@@ -148,7 +148,7 @@ impl XorName {
 
     /// Hex-encode the `XorName` as a `String`.
     pub fn to_hex(&self) -> String {
-        self.0.to_hex()
+        hex::encode(self.0)
     }
 
     /// Returns the number of bits in which `self` differs from `other`.
@@ -165,7 +165,8 @@ impl XorName {
     //         Err(FromHexError::InvalidHexCharacter { c, index }) => {
     //             return Err(XorNameFromHexError::InvalidCharacter(c, index))
     //         }
-    //         Err(FromHexError::InvalidHexLength) => return Err(XorNameFromHexError::WrongLength),
+    //         Err(FromHexError::InvalidStringLength) |
+    //         Err(FromHexError::OddLength) => return Err(XorNameFromHexError::WrongLength),
     //     };
     //     if data.len() != XOR_NAME_LEN {
     //         return Err(XorNameFromHexError::WrongLength);

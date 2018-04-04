@@ -112,7 +112,7 @@ pub use self::prefix::{Prefix, UnversionedPrefix};
 pub use self::prefix_map::PrefixMap;
 pub use super::{XOR_NAME_BITS, XOR_NAME_LEN, XorName};
 use itertools::Itertools;
-use log::LogLevel;
+use log::Level;
 use std::{iter, mem};
 use std::cmp::Ordering;
 use std::collections::{BTreeMap, BTreeSet};
@@ -700,7 +700,7 @@ impl RoutingTable {
             .collect_vec();
         if !dropped_names.is_empty() {
             log_or_panic!(
-                LogLevel::Warn,
+                Level::Warn,
                 "{:?} Removed nodes from RT as part of OwnSectionMerge {:?}",
                 self.our_name,
                 dropped_names
