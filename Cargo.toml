@@ -19,7 +19,7 @@ name = "ci_test"
 
 [dependencies]
 config_file_handler = "~0.10.0"
-crust = "~0.30.0"
+crust = { git = "https://github.com/maidsafe/crust", rev = "5db7c6eaff4aeac043ec5eecc9d3bfb89218e5b0" }
 fake_clock = "~0.2.0"
 fs2 = "0.4.2"
 hex = "~0.3.1"
